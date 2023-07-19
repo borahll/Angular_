@@ -31,7 +31,7 @@ export class Cart{
         this.items = [];
         this.total = 0;
     }
-    removeItem(productId: number){
+    removeItem(productId: number|undefined){
         let index = this.items.findIndex(p => p.product.id == productId);
         this.items.splice(index, 1);
         this.calculate();

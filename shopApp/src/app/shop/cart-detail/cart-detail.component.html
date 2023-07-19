@@ -1,4 +1,4 @@
-<navbar>
+<navbar></navbar>
     <div class="container pt-100 mb-5">
         <h1 class="mb-2">Sepet</h1>
         <div class="row">
@@ -20,10 +20,10 @@
                                 <td>{{item.product.name}}</td>
                                 <td>{{item.product.price}}</td>
                                 <td>
-                                    <input #quantity type="text" class="form-control" [value]="item.quantity" (change)="cart.updateQuantity(item.product,quantity)">
+                                    <input #quantity style="width: 50px" type="text" class="form-control" [value]="item.quantity" (change)="cart.updateQuantity(item.product,quantity)">
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger btn-sm">
+                                    <button class="btn btn-danger btn-sm" (click)="cart.removeItem(item.product.id)">
                                         <i class="fa fa-times fa-fw"></i>
                                     </button>
                                 </td>
@@ -59,4 +59,3 @@
             </div>
         </div>
     </div>
-</navbar>
