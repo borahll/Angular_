@@ -19,7 +19,9 @@
                             <tr *ngFor="let item of cart.items">
                                 <td>{{item.product.name}}</td>
                                 <td>{{item.product.price}}</td>
-                                <td>{{item.quantity}}</td>
+                                <td>
+                                    <input #quantity type="text" class="form-control" [value]="item.quantity" (change)="cart.updateQuantity(item.product,quantity)">
+                                </td>
                                 <td>
                                     <button class="btn btn-danger btn-sm">
                                         <i class="fa fa-times fa-fw"></i>

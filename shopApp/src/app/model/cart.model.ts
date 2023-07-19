@@ -36,7 +36,7 @@ export class Cart{
         this.items.splice(index, 1);
         this.calculate();
     }
-    updateQuantity(product: Product, quantity: number){
+    updateQuantity(product: Product, quantity: HTMLInputElement){
         this.items.find(p => p.product.id == product.id)?.quantity? quantity: undefined;
         this.calculate();
     }
