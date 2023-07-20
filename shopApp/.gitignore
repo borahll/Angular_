@@ -7,7 +7,7 @@
 
 
 #Angular 
-/.angular
+.angular/*
 # dependencies
 /node_modules
 
