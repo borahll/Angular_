@@ -1,5 +1,4 @@
 import { Injectable, OnInit } from "@angular/core";
-import { Product } from "./product.model";
 import { RestService } from "./rest.service";
 import { Category } from "./category.model";
 

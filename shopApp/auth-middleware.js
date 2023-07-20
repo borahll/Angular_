@@ -8,7 +8,6 @@ module.exports = function(req, res, next){
     debugger
     if(req.url === '/login' && req.method === 'POST'){
         if(req.body.username === username && req.body.password === password){
-            debugger
             let token = jwt.sign({data: username, expiresIn: '1h'}, app_secret);
             res.json({success: true, token: token});
         }
@@ -19,7 +18,7 @@ module.exports = function(req, res, next){
         return;
     }
     else{
-        if(req.url.startsWith("/products") || req.url.startsWith("/categories") && req.method != 'GET'){
+        if(req.method != 'GET' && req.url.startsWith('/products') || req.url.startsWith('/categories')){
             let token = req.headers['authorization'];
             if(token != "" && token.startsWith('Bearer<')){
                 token.substrin(7, token.length);
