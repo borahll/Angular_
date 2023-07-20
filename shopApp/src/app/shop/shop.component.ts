@@ -43,8 +43,9 @@ export class ShopComponent{
     getRange(length: number): number[] {
         return Array.from({ length }, (_, index) => index + 1);
     }
-    addProductToCart(product:Product){
-        this.cart.addItem(product);
-        this.router.navigateByUrl("/cart");
+
+    changePageSize(valueOfPage: HTMLSelectElement){
+        this.productsPerPage = parseInt(valueOfPage.value);
+        this.selectedPage = 1; 
     }
 }

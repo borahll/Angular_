@@ -12,33 +12,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-warning">
+                        <div class="form-inline float-right m-0 p-0">
+                            <select name="" id="" class="form-control-sm" [value]="productsPerPage" (change)="changePageSize(valueOfPage)" #valueOfPage>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
                         {{this.getSomeProducts().length}}
                     </div>
                 </div>
-                <ng-container *ngFor="let p of getSomeProducts()">
-                    <div class="col-md-4">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="">{{p.id}}</a>
-                                </h4>
-                                <h4 class="card-title">
-                                    <a href="">{{p.name}}</a>
-                                </h4>
-                                <h4 class="card-title">
-                                    <a href="">{{p.description}}</a>
-                                </h4>                
-                                <h4 class="card-title">
-                                    <a href="">{{p.imageurl}}</a>
-                                </h4>
-                            </div>
-                            <div class="card-footer text-center">
-                                <button class="btn btn-outline-primary btn-sm">Details</button>
-                                <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ml-3">Add To Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </ng-container>
+                <product-list [products]="getAllProducts()"></product-list>
             </div>
             <div class="row mt-3">
                 <div class="col">

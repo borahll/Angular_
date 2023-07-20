@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-4" *ngFor="let p of products">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="">{{p.id}}</a>
+                </h4>
+                <h4 class="card-title">
+                    <a href="">{{p.name}}</a>
+                </h4>
+                <h4 class="card-title">
+                    <a href="">{{p.description}}</a>
+                </h4>                
+                <h4 class="card-title">
+                    <a href="">{{p.imageurl}}</a>
+                </h4>
+            </div>
+            <div class="card-footer text-center">
+                <button class="btn btn-outline-primary btn-sm">Details</button>
+                <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ml-3">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
