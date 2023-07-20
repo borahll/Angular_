@@ -23,7 +23,7 @@ export class RestService{
   }
   authentication(name: string, password: string): Observable<boolean>{
     return this.http.post<any>(this.baseUrl + 'login', {username:name, password:password}).pipe(map(response =>{
-      this.token = response.success ?response.token : "";
+      this.token = response.success ? response.token : "";
       return response.success; 
     }));
   }
