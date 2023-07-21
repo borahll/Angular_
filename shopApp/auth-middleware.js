@@ -21,7 +21,7 @@ module.exports = function(req, res, next){
         if(req.method != 'GET' && req.url.startsWith('/products') || req.url.startsWith('/categories')){
             let token = req.headers['authorization'];
             if(token != "" && token.startsWith('Bearer<')){
-                token.substrin(7, token.length);
+                token.substring(7, token.length - 1 );
                 try{
                     jwt.verify(token, app_secret);
                     next();

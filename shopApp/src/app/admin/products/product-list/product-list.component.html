@@ -13,10 +13,10 @@
             <td>{{a.description}}</td>
             <td>{{a.name}}</td>
             <td>
-                <button class="btn btn-warning" routerLink="['/admin/main/products/edit', p.id]">Edit</button>
+                <button class="btn btn-warning" [routerLink]="['/admin/main/products/edit', a.id]">Edit</button>
                 <button class="btn btn-warning" (click)="deleteProduct(a)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
-<p>order-list works!</p>
+<button class="btn btn-primary" routerLink="/admin/main/products/create">Create</button>
