@@ -1,1 +1,21 @@
-<p>product-list works!</p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>name</th>
+            <th>price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of getProducts()">
+            <td>{{a.id}}</td>
+            <td>{{a.imageurl}}</td>
+            <td>{{a.description}}</td>
+            <td>{{a.name}}</td>
+            <td>
+                <button class="btn btn-warning" routerLink="'admin/main/products/edit', p.id">Edit</button>
+                <button class="btn btn-warning" (click)="deleteProduct(a)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
