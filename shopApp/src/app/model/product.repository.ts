@@ -35,4 +35,8 @@ export class ProducrRepository implements OnInit{
              })
         }
     }
+    deleteProduct(product: Product){
+        this.restService.deleteProduct(product)
+        .subscribe(p => this._products.splice(this._products.findIndex(p=>p.id == product.id), 1));
+    }
 }

@@ -14,15 +14,20 @@ module.exports = function(req, res, next){
         else{
             res.json({success: false});
         }
+
         res.end();
         return;
     }
     else{
+        console.log('dddd')
         if(req.method != 'GET' && req.url.startsWith('/products') || req.url.startsWith('/categories')){
+
             let token = req.headers['authorization'];
             if(token != "" && token.startsWith('Bearer<')){
-                token.substring(7, token.length - 1 );
+
+                token = token.substring(7, token.length - 1 );
                 try{
+                    console.log(token)
                     jwt.verify(token, app_secret);
                     next();
                     return;

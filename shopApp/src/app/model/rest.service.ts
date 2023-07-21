@@ -30,14 +30,23 @@ export class RestService{
   addProduct(product: Product): Observable<Product>{
     return this.http.post<Product>(this.baseUrl + 'products', product, {
       headers: new HttpHeaders({
-        "Authorization": 'Bearer<${this.token}>'
+        'Authorization': `Bearer<${this.token}>`
       })
     });
   }
   updateProduct(product: Product): Observable<Product>{
     return this.http.post<Product>(this.baseUrl + 'products/' + product.id, product, {
       headers: new HttpHeaders({
-        "Authorization": 'Bearer<${this.token}>'
+        'Authorization': `Bearer<${this.token}>`
+      })
+    });
+  }
+  deleteProduct(p: Product): Observable<Product>{
+    // debugger;
+    this.token;
+    return this.http.delete<Product>(this.baseUrl + 'products/' + p.id, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer<${this.token}>`
       })
     });
   }
