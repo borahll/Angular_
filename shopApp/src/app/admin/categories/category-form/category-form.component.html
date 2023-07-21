@@ -1,1 +1,11 @@
-<p>category-form works!</p>
+<h5>{{editing?"Edit": "Create"}} Product</h5>
+<div class="form-group" *ngIf="this.category != undefined">
+    <form #form = "ngForm" (ngSubmit)="save(form)">
+        <div class="form-group">
+            <label >Name</label>
+            <input class="form-control" name="name" [(ngModel)]="category.name">
+        </div>
+        <button type="submit" class="btn btn-primary">{{editing?"Edit": "Create"}}</button>
+        <button type="submit" class="btn btn-warning" [routerLink]='["/admin/main/products"]'>Cancel</button>
+    </form>
+</div>

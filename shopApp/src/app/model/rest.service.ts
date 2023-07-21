@@ -28,7 +28,21 @@ export class RestService{
     }));
   }
   addProduct(product: Product): Observable<Product>{
-    return this.http.post<Product>(this.baseUrl + 'products', product, {
+    return this.http.post<Product>(this.baseUrl + 'products/', product, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer<${this.token}>`
+      })
+    });
+  }
+  addCategory(category: Category): Observable<Category>{
+    return this.http.post<Category>(this.baseUrl + 'categories/', category.id, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer<${this.token}>`
+      })
+    });
+  }
+  deleteCategory(category: Category): Observable<Category>{
+    return this.http.delete<Category>(this.baseUrl + 'categories/' + category.id, {
       headers: new HttpHeaders({
         'Authorization': `Bearer<${this.token}>`
       })
@@ -42,9 +56,14 @@ export class RestService{
     });
   }
   deleteProduct(p: Product): Observable<Product>{
-    // debugger;
-    this.token;
     return this.http.delete<Product>(this.baseUrl + 'products/' + p.id, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer<${this.token}>`
+      })
+    });
+  }
+  updateCategory(category: Category): Observable<Category>{
+    return this.http.post<Category>(this.baseUrl + 'products/' + category.id, category, {
       headers: new HttpHeaders({
         'Authorization': `Bearer<${this.token}>`
       })

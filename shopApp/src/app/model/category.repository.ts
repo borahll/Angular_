@@ -6,7 +6,7 @@ import { Category } from "./category.model";
 export class CategoryRepository implements OnInit{
     private _categories: Category[] = [];
     constructor(private restService: RestService){
-        this.restService.getCategories().subscribe(products => this._categories = products);
+        this.restService.getCategories().subscribe(categorys => this._categories = categorys);
     }
     ngOnInit(): void {
     }
@@ -15,5 +15,21 @@ export class CategoryRepository implements OnInit{
     }
     getCategories(): Category[]{
         return this._categories;
+    }
+    saveCategory(category: Category){
+        if(category.id == null || category.id == undefined || parseInt(category.id) == 0){
+            this.restService.addCategory(category)
+            .subscribe(p=> this._categories.push(p));
+        }else{
+            this.restService.updateCategory(category)
+            .subscribe(p=>{
+                this._categories.splice(this._categories.findIndex( p => p.id == category.id), 1, category);
+            
+             })
+        }
+    }
+    deleteCategory(category: Category){
+        this.restService.deleteCategory(category)
+        .subscribe(p => this._categories.splice(this._categories.findIndex(p=>p.id == category.id), 1));
     }
 }
