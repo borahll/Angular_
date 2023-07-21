@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/model/product.model';
 import { ProducrRepository } from 'src/app/model/product.repository';
 
@@ -12,7 +12,7 @@ import { ProducrRepository } from 'src/app/model/product.repository';
 export class ProductFormComponent {
   editing: boolean = false;
   product: Product | undefined = new Product();
-  constructor(private route: ActivatedRoute, private repo: ProducrRepository){
+  constructor(private route: ActivatedRoute, private repo: ProducrRepository, private router: Router){
     this.editing = route.snapshot.params['mode'] == 'edit';
     console.log(this.editing);
     if(this.editing && this.product !=undefined){
@@ -20,6 +20,7 @@ export class ProductFormComponent {
     }
   }
   save(form: NgForm){
-
+    this.repo.saveProduct(<Product>this.product);
+    this.router.navigateByUrl('/admin/main/products');
   }
 }

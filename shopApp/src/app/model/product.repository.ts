@@ -23,4 +23,16 @@ export class ProducrRepository implements OnInit{
         }
         return this._products;
     }
+    saveProduct(product: Product){
+        if(product.id == null || product.id == undefined || product.id == 0){
+            this.restService.addProduct(product)
+            .subscribe(p=> this._products.push(p));
+        }else{
+            this.restService.updateProduct(product)
+            .subscribe(p=>{
+                this._products.splice(this._products.findIndex( p => p.id == product.id), 1, product);
+            
+             })
+        }
+    }
 }
